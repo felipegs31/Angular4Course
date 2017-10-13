@@ -370,5 +370,22 @@
       "restaurantId": "tasty-treats"
     }
   ],
-  "orders": []
+  "orders": [
+    {
+      "name": "Juliana",
+      "email": "juliana@gmail.com",
+      "emailConfirmation": "juliana@gmail.com",
+      "address": "Juliana",
+      "number": "223",
+      "optionalAddress": "223",
+      "paymentOption": "MON",
+      "orderItems": [
+        {
+          "quantity": 1,
+          "menuId": "cup-cake"
+        }
+      ],
+      "id": 1
+    }
+  ]
 }
