@@ -19,7 +19,7 @@ export class OrderComponent implements OnInit {
   numberPattern = /^[0-9]*$/
 
   orderForm: FormGroup
-
+  orderId: string
   delivery: number = 8
 
   paymentOptions: RadioOption[] = [
@@ -76,10 +76,17 @@ export class OrderComponent implements OnInit {
     this.orderService.remove(item)
   }
 
+  isOrderCompleted(): boolean {
+    return this.orderId !== undefined
+  }
+
   checkOrder(order: Order){
     order.orderItems = this.cartItems()
       .map((item:CartItem)=>new OrderItem(item.quantity, item.menuItem.id))
     this.orderService.checkOrder(order)
+      .do((orderId: string) => {
+        this.orderId = orderId
+      })
       .subscribe( (orderId: string) => {
         this.router.navigate(['/order-summary'])
         this.orderService.clear()
